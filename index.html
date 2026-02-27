@@ -1,310 +1,131 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>林博御裝修示範屋 - 專業團隊系統</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        /* Header */
-        .header {
-            text-align: center;
-            color: white;
-            padding: 40px 20px;
-            margin-bottom: 40px;
-        }
-        
-        .header h1 {
-            font-size: 3em;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .header .subtitle {
-            font-size: 1.5em;
-            opacity: 0.9;
-            margin-bottom: 20px;
-        }
-        
-        .header .tag {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.9em;
-        }
-        
-        /* Stats */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        
-        .stat-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            color: white;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .stat-number {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
-        .stat-label {
-            font-size: 1em;
-            opacity: 0.8;
-        }
-        
-        /* Main Menu */
-        .menu-section {
-            margin-bottom: 40px;
-        }
-        
-        .section-title {
-            color: white;
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        
-        .menu-card {
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
-            color: #333;
-        }
-        
-        .menu-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        
-        .menu-icon {
-            font-size: 4em;
-            margin-bottom: 15px;
-        }
-        
-        .menu-title {
-            font-size: 1.4em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #1a1a2e;
-        }
-        
-        .menu-desc {
-            color: #666;
-            line-height: 1.5;
-        }
-        
-        /* AI Agent Section */
-        .agent-section {
-            margin-bottom: 40px;
-        }
-        
-        .agent-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-        
-        .agent-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 15px;
-            padding: 20px;
-            color: white;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .agent-card:hover {
-            transform: scale(1.05);
-        }
-        
-        .agent-icon {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-        
-        .agent-name {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        /* Footer */
-        .footer {
-            text-align: center;
-            color: white;
-            padding: 30px;
-            opacity: 0.7;
-        }
-        
-        /* Mobile */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2em;
-            }
-            
-            .menu-card {
-                padding: 20px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#667eea">
+<meta name="description" content="林博御裝修系統 - 日本大阪住宅裝修示範工程">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>林博御裝修系統</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#667eea;--secondary:#764ba2;--dark:#1a1a2e;--light:#fff;--gray:#666}
+body{font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);min-height:100vh;color:var(--light)}
+.container{max-width:800px;margin:0 auto;padding:20px}
+.header{text-align:center;padding:40px 20px}
+.logo{font-size:4em;margin-bottom:15px}
+.title{font-size:2.2em;font-weight:bold;margin-bottom:10px}
+.subtitle{font-size:1.1em;opacity:0.9;margin-bottom:20px}
+.tag{display:inline-block;background:rgba(255,255,255,0.2);padding:8px 20px;border-radius:20px;font-size:0.9em}
+.btn-group{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px 0}
+.btn{padding:12px 25px;border-radius:25px;font-weight:bold;text-decoration:none;transition:all 0.3s;display:inline-block}
+.btn-primary{background:linear-gradient(135deg,var(--primary),var(--secondary));color:var(--light)}
+.btn-outline{background:transparent;border:2px solid var(--light);color:var(--light)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(0,0,0,0.3)}
+.section{margin:30px 0}
+.section-title{font-size:1.5em;margin-bottom:20px;text-align:center}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px}
+.menu-card{background:rgba(255,255,255,0.95);border-radius:15px;padding:20px;text-align:center;text-decoration:none;color:#333;transition:all 0.3s;display:block}
+.menu-card:hover{transform:translateY(-5px);box-shadow:0 15px 30px rgba(0,0,0,0.3)}
+.menu-icon{font-size:2.5em;margin-bottom:10px}
+.menu-title{font-weight:bold;margin-bottom:5px;font-size:1em}
+.menu-desc{font-size:0.8em;color:var(--gray)}
+.agent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.agent-card{background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:12px;padding:15px;text-align:center;color:var(--light);cursor:pointer;transition:all 0.3s}
+.agent-card:hover{transform:scale(1.05)}
+.agent-icon{font-size:1.8em;margin-bottom:5px}
+.agent-name{font-weight:bold;font-size:0.9em}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0}
+.stat-card{background:rgba(255,255,255,0.1);border-radius:12px;padding:15px;text-align:center}
+.stat-number{font-size:1.5em;font-weight:bold;color:var(--primary)}
+.stat-label{font-size:0.75em;opacity:0.8}
+.footer{text-align:center;padding:30px;opacity:0.7;font-size:0.9em}
+.download-section{background:rgba(255,255,255,0.1);border-radius:15px;padding:25px;margin:30px 0}
+.download-title{font-size:1.3em;margin-bottom:15px;text-align:center}
+.download-badges{display:flex;gap:15px;justify-content:center;flex-wrap:wrap}
+.badge{display:flex;align-items:center;gap:8px;padding:10px 20px;background:rgba(255,255,255,0.2);border-radius:10px;text-decoration:none;color:var(--light)}
+.badge-icon{font-size:1.5em}
+@media(max-width:600px){
+.title{font-size:1.6em}
+.stats{grid-template-columns:repeat(2,1fr)}
+.menu-grid{grid-template-columns:repeat(2,1fr)}
+.agent-grid{grid-template-columns:repeat(3,1fr)}
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <h1>🏠 林博御裝修示範屋</h1>
-            <p class="subtitle">日本大阪住宅裝修示範工程</p>
-            <div class="tag">✨ 示範屋 No.1 | 專業團隊 | 品質保証</div>
-        </div>
-        
-        <!-- Stats -->
-        <div class="stats">
-            <div class="stat-card">
-                <div class="stat-number">¥3.55M</div>
-                <div class="stat-label">総工事費</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">14</div>
-                <div class="stat-label">專業團隊</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">12</div>
-                <div class="stat-label">週工期</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">¥1.2M</div>
-                <div class="stat-label">預估補助</div>
-            </div>
-        </div>
-        
-        <!-- Main Menu -->
-        <div class="menu-section">
-            <h2 class="section-title">📚 完整文件系統</h2>
-            <div class="menu-grid">
-                <a href="agent-system.html" class="menu-card" target="_blank">
-                    <div class="menu-icon">🤖</div>
-                    <div class="menu-title">AI 助手系統</div>
-                    <div class="menu-desc">估價・材料・DIY・驗收・補助<br>五大AI Agent為您服務</div>
-                </a>
-                
-                <a href="驗收流程手冊.html" class="menu-card" target="_blank">
-                    <div class="menu-icon">📋</div>
-                    <div class="menu-title">驗收流程手冊</div>
-                    <div class="menu-desc">5階段專業驗收流程<br>完整驗收單下載</div>
-                </a>
-                
-                <a href="日本施工合規手冊.md" class="menu-card" target="_blank">
-                    <div class="menu-icon">⚖️</div>
-                    <div class="menu-title">施工合規手冊</div>
-                    <div class="menu-desc">日本法規・資格證照<br>保險要求・合約範本</div>
-                </a>
-                
-                <a href="施工團隊編制表.md" class="menu-card" target="_blank">
-                    <div class="menu-icon">👷</div>
-                    <div class="menu-title">團隊編制表</div>
-                    <div class="menu-desc">14人專業團隊<br>資格證照・保險狀況</div>
-                </a>
-                
-                <a href="日本補助申請系統.md" class="menu-card" target="_blank">
-                    <div class="menu-icon">💰</div>
-                    <div class="menu-title">補助申請系統</div>
-                    <div class="menu-desc">補助搜尋・資格評估<br>申請代理服務</div>
-                </a>
-                
-                <a href="示範屋團隊介紹.md" class="menu-card" target="_blank">
-                    <div class="menu-icon">🏆</div>
-                    <div class="menu-title">示範屋團隊</div>
-                    <div class="menu-desc">完整團隊介紹<br>施工流程・品質保証</div>
-                </a>
-                
-                <a href="大阪裝修完整計劃書.md" class="menu-card" target="_blank">
-                    <div class="menu-icon">📐</div>
-                    <div class="menu-title">工程計劃書</div>
-                    <div class="menu-desc">完整工程項目<br>費用明細・工期計劃</div>
-                </a>
-                
-                <a href="估價單分析報告.md" class="menu-card" target="_blank">
-                    <div class="menu-icon">📊</div>
-                    <div class="menu-title">估價分析</div>
-                    <div class="menu-desc">估價單分析<br>市場行情・議價建議</div>
-                </a>
-            </div>
-        </div>
-        
-        <!-- AI Agents -->
-        <div class="agent-section">
-            <h2 class="section-title">🤖 AI 助手服務</h2>
-            <div class="agent-grid">
-                <div class="agent-card" onclick="window.open('agent-system.html')">
-                    <div class="agent-icon">📊</div>
-                    <div class="agent-name">估價詢問</div>
-                </div>
-                <div class="agent-card" onclick="window.open('agent-system.html')">
-                    <div class="agent-icon">🛒</div>
-                    <div class="agent-name">材料採購</div>
-                </div>
-                <div class="agent-card" onclick="window.open('agent-system.html')">
-                    <div class="agent-icon">🔧</div>
-                    <div class="agent-name">DIY詢問</div>
-                </div>
-                <div class="agent-card" onclick="window.open('agent-system.html')">
-                    <div class="agent-icon">📋</div>
-                    <div class="agent-name">驗收流程</div>
-                </div>
-                <div class="agent-card" onclick="window.open('agent-system.html')">
-                    <div class="agent-icon">💰</div>
-                    <div class="agent-name">補助申請</div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Footer -->
-        <div class="footer">
-            <p>© 2026 林博御裝修示範屋</p>
-            <p>大阪住宅裝修示範工程 No.1</p>
-            <p style="margin-top:10px; font-size:0.9em;">
-                聯絡我們：請透過 AI 助手系統
-            </p>
-        </div>
-    </div>
+<div class="container">
+<!-- Header -->
+<div class="header">
+<div class="logo">🏠</div>
+<h1 class="title">林博御裝修系統</h1>
+<p class="subtitle">日本大阪住宅裝修示範工程</p>
+<div class="tag">✨ 示範屋 No.1 | 專業團隊 | 品質保証</div>
+<div class="btn-group">
+<a href="login.html" class="btn btn-primary">🔐 登入</a>
+<a href="register.html" class="btn btn-outline">📝 註冊</a>
+</div>
+</div>
+
+<!-- Stats -->
+<div class="stats">
+<div class="stat-card"><div class="stat-number">¥3.55M</div><div class="stat-label">総工事費</div></div>
+<div class="stat-card"><div class="stat-number">14</div><div class="stat-label">專業團隊</div></div>
+<div class="stat-card"><div class="stat-number">12</div><div class="stat-label">週工期</div></div>
+<div class="stat-card"><div class="stat-number">¥1.2M</div><div class="stat-label">預估補助</div></div>
+</div>
+
+<!-- 下載安裝 -->
+<div class="download-section">
+<div class="download-title">📲 下載安裝</div>
+<div class="download-badges">
+<a href="#" class="badge"><span class="badge-icon">🌐</span> 網頁版</a>
+<a href="#" class="badge"><span class="badge-icon">🤖</span> Android</a>
+<a href="#" class="badge"><span class="badge-icon">🍎</span> iOS</a>
+</div>
+</div>
+
+<!-- 服務項目 -->
+<div class="section">
+<h2 class="section-title">📚 服務項目</h2>
+<div class="menu-grid">
+<a href="agent-system.html" class="menu-card" target="_blank"><div class="menu-icon">🤖</div><div class="menu-title">AI 助手</div><div class="menu-desc">估價・材料・DIY<br>補助・驗收</div></a>
+<a href="驗收流程手冊.html" class="menu-card" target="_blank"><div class="menu-icon">📋</div><div class="menu-title">驗收流程</div><div class="menu-desc">5階段驗收<br>完整驗收單</div></a>
+<a href="日本施工合規手冊.md" class="menu-card" target="_blank"><div class="menu-icon">⚖️</div><div class="menu-title">施工規範</div><div class="menu-desc">法規・資格<br>保險要求</div></a>
+<a href="施工團隊編制表.md" class="menu-card" target="_blank"><div class="menu-icon">👷</div><div class="menu-title">團隊編制</div><div class="menu-desc">14人專業<br>資格證照</div></a>
+<a href="日本補助申請系統.md" class="menu-card" target="_blank"><div class="menu-icon">💰</div><div class="menu-title">補助申請</div><div class="menu-desc">補助搜尋<br>資格評估</div></a>
+<a href="示範屋團隊介紹.md" class="menu-card" target="_blank"><div class="menu-icon">🏆</div><div class="menu-title">團隊介紹</div><div class="menu-desc">完整團隊<br>施工流程</div></a>
+<a href="大阪裝修完整計劃書.md" class="menu-card" target="_blank"><div class="menu-icon">📐</div><div class="menu-title">工程計劃</div><div class="menu-desc">工程項目<br>費用明細</div></a>
+<a href="估價單分析報告.md" class="menu-card" target="_blank"><div class="menu-icon">📊</div><div class="menu-title">估價分析</div><div class="menu-desc">估價單分析<br>議價建議</div></a>
+<a href="https://showhand.jp/property-details?type=address&address=%E4%BD%8F%E4%B9%8B%E6%B1%9F&name=%E4%BD%8F%E4%B9%8B%E6%B1%9F&facilities=restaurants%2Cschools%2Cconvenience%2Cmedical%2Ctransportation%2Cnegative%2Cparking%2Cparks%2Cshopping%2Cfinance%2Centertainment&expanded=parking%2Cparks%2Cshopping%2Cfinance%2Centertainment" class="menu-card" target="_blank"><div class="menu-icon">🗺️</div><div class="menu-title">周邊設施</div><div class="menu-desc">交通・學校<br>商場・醫院</div></a>
+</div>
+</div>
+
+<!-- AI Agents -->
+<div class="section">
+<h2 class="section-title">🤖 AI 助手服務</h2>
+<div class="agent-grid">
+<div class="agent-card" onclick="window.open('agent-system.html')"><div class="agent-icon">📊</div><div class="agent-name">估價詢問</div></div>
+<div class="agent-card" onclick="window.open('agent-system.html')"><div class="agent-icon">🛒</div><div class="agent-name">材料採購</div></div>
+<div class="agent-card" onclick="window.open('agent-system.html')"><div class="agent-icon">🔧</div><div class="agent-name">DIY詢問</div></div>
+<div class="agent-card" onclick="window.open('agent-system.html')"><div class="agent-icon">📋</div><div class="agent-name">驗收流程</div></div>
+<div class="agent-card" onclick="window.open('agent-system.html')"><div class="agent-icon">💰</div><div class="agent-name">補助申請</div></div>
+</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+<p>© 2026 林博御裝修系統</p>
+<p>大阪住宅裝修示範工程 No.1</p>
+</div>
+</div>
+
+<script>
+// Service Worker for PWA
+if('serviceWorker' in navigator){
+navigator.serviceWorker.register('sw.js').then(()=>console.log('SW registered'));
+}
+</script>
 </body>
 </html>

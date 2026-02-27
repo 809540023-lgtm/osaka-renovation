@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>註冊帳號 - 林博御裝修系統</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Sans TC",sans-serif;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.container{max-width:450px;width:100%}
+.box{background:#fff;border-radius:20px;padding:40px;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+.logo{text-align:center;margin-bottom:30px}
+.logo-icon{font-size:3em;margin-bottom:10px}
+.logo-text{font-size:1.5em;font-weight:bold;color:#1a1a2e}
+.logo-subtitle{color:#666;margin-top:5px}
+.alert{padding:15px;border-radius:10px;margin-bottom:20px;display:none}
+.alert-error{background:#fee;color:#c00}
+.alert-success{background:#efe;color:#060}
+.form-group{margin-bottom:20px}
+.form-label{display:block;margin-bottom:8px;color:#333;font-weight:500}
+.form-input,.form-select{width:100%;padding:15px;border:2px solid #e0e0e0;border-radius:10px;font-size:1em;transition:border-color 0.3s}
+.form-input:focus{outline:none;border-color:#667eea}
+.btn{width:100%;padding:15px;border:none;border-radius:10px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:all 0.3s}
+.btn-primary{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff}
+.btn-primary:hover{transform:translateY(-2px)}
+.links{text-align:center;margin-top:20px;color:#666}
+.links a{color:#667eea;text-decoration:none}
+.links a:hover{text-decoration:underline}
+.user-types{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
+.type-option{padding:15px;border:2px solid #e0e0e0;border-radius:10px;text-align:center;cursor:pointer;transition:all 0.3s}
+.type-option:hover{border-color:#667eea}
+.type-option.active{border-color:#667eea;background:rgba(102,126,234,0.1)}
+.type-option input{display:none}
+.type-icon{font-size:1.5em;margin-bottom:5px}
+.type-name{font-weight:bold}
+.type-desc{font-size:0.8em;color:#666}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="box">
+<div class="logo">
+<div class="logo-icon">🏠</div>
+<div class="logo-text">林博御裝修系統</div>
+<div class="logo-subtitle">建立新帳號</div>
+</div>
+<div id="alert" class="alert"></div>
+<form id="registerForm">
+<div class="form-group">
+<label class="form-label">帳號類型</label>
+<div class="user-types">
+<label class="type-option active">
+<input type="radio" name="userType" value="client" checked>
+<div class="type-icon">👀</div>
+<div class="type-name">客戶瀏覽</div>
+<div class="type-desc">參觀施工品質</div>
+</label>
+<label class="type-option">
+<input type="radio" name="userType" value="agent">
+<div class="type-icon">🤝</div>
+<div class="type-name">業務中介</div>
+<div class="type-desc">推薦客戶</div>
+</label>
+</div>
+</div>
+<div class="form-group">
+<label class="form-label">姓名 / 公司名稱</label>
+<input type="text" class="form-input" id="name" placeholder="請輸入姓名" required>
+</div>
+<div class="form-group">
+<label class="form-label">Email</label>
+<input type="email" class="form-input" id="email" placeholder="請輸入Email" required>
+</div>
+<div class="form-group">
+<label class="form-label">電話</label>
+<input type="tel" class="form-input" id="phone" placeholder="請輸入電話">
+</div>
+<div class="form-group">
+<label class="form-label">密碼（至少8字元）</label>
+<input type="password" class="form-input" id="password" placeholder="請輸入密碼" minlength="8" required>
+</div>
+<div class="form-group">
+<label class="form-label">確認密碼</label>
+<input type="password" class="form-input" id="confirmPassword" placeholder="請再次輸入密碼" required>
+</div>
+<button type="submit" class="btn btn-primary">註冊帳號</button>
+</form>
+<div class="links">
+已經有帳號？<a href="login.html">登入</a>
+</div>
+</div>
+<div style="text-align:center;margin-top:20px;color:#fff;opacity:0.7">
+<a href="index.html" style="color:#fff">回首頁</a>
+</div>
+</div>
+<script>
+// 用戶類型選擇
+document.querySelectorAll('.type-option').forEach(option=>{
+option.addEventListener('click',function(){
+document.querySelectorAll('.type-option').forEach(o=>o.classList.remove('active'));
+this.classList.add('active');
+});
+});
+// 註冊表單
+document.getElementById('registerForm').addEventListener('submit',function(e){
+e.preventDefault();
+const name=document.getElementById('name').value;
+const email=document.getElementById('email').value;
+const password=document.getElementById('password').value;
+const confirmPassword=document.getElementById('confirmPassword').value;
+if(password!==confirmPassword){
+showAlert('密碼不一致！','error');
+return;
+}
+if(password.length<8){
+showAlert('密碼至少需要8個字元！','error');
+return;
+}
+// 顯示成功（實際需要 Firebase）
+showAlert('註冊成功即將開放，請稍後再試！','success');
+});
+function showAlert(msg,type){
+const alert=document.getElementById('alert');
+alert.textContent=msg;
+alert.className='alert alert-'+type;
+alert.style.display='block';
+}
+</script>
+</body>
+</html>
