@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工班專區 - 林博御裝修系統</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+            background: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            font-size: 2em;
+        }
+        
+        .header-title {
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .btn-logout {
+            padding: 8px 15px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .container {
+            display: flex;
+            min-height: calc(100vh - 70px);
+        }
+        
+        .sidebar {
+            width: 250px;
+            background: white;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        
+        .menu-title {
+            color: #999;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .menu-item {
+            padding: 12px 15px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .menu-item:hover {
+            background: #f0f0f0;
+        }
+        
+        .menu-item.active {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+        
+        .main {
+            flex: 1;
+            padding: 30px;
+        }
+        
+        .page-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .card-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            transition: width 0.5s;
+        }
+        
+        .task-list {
+            list-style: none;
+        }
+        
+        .task-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .task-item:last-child {
+            border-bottom: none;
+        }
+        
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-progress {
+            background: #cce5ff;
+            color: #004085;
+        }
+        
+        .status-done {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+        
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .photo-item {
+            aspect-ratio: 1;
+            background: #ddd;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .photo-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .info-item {
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 10px;
+        }
+        
+        .info-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-left">
+            <div class="logo">👷</div>
+            <div class="header-title">林博御裝修 - 工班系統</div>
+        </div>
+        <div class="header-right">
+            <div class="user-info">
+                <div class="user-name">施工團隊</div>
+                <div class="user-type">工班帳號</div>
+            </div>
+            <button class="btn-logout" onclick="window.location.href='../login.html'">登出</button>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="menu-title">工程</div>
+            <div class="menu-item active" onclick="showPage('dashboard')">
+                <span>📊</span> 工程儀表板
+            </div>
+            <div class="menu-item" onclick="showPage('progress')">
+                <span>📈</span> 進度回報
+            </div>
+            <div class="menu-item" onclick="showPage('report')">
+                <span>📋</span> 問題回報
+            </div>
+            <div class="menu-item" onclick="showPage('material')">
+                <span>🛒</span> 材料申請
+            </div>
+            <div class="menu-item" onclick="showPage('photos')">
+                <span>📷</span> 施工拍照
+            </div>
+            
+            <div class="menu-title" style="margin-top: 30px;">資料</div>
+            <div class="menu-item" onclick="showPage('plans')">
+                <span>📐</span> 工程圖面
+            </div>
+            <div class="menu-item" onclick="showPage('specs')">
+                <span>📝</span> 施工規範
+            </div>
+            
+            <div class="menu-title" style="margin-top: 30px;">個人</div>
+            <div class="menu-item" onclick="showPage('salary')">
+                <span>💵</span> 薪資查詢
+            </div>
+            <div class="menu-item" onclick="showPage('profile')">
+                <span>👤</span> 個人資料
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main">
+            <!-- 工程儀表板 -->
+            <div id="page-dashboard">
+                <h1 class="page-title">📊 工程儀表板</h1>
+                
+                <div class="card">
+                    <div class="card-title">🏠 示範屋工程進度</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 65%;">65%</div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; color: #666; font-size: 0.9em; margin-top: 10px;">
+                        <span>開始：2026/02/16</span>
+                        <span>預計完工：2026/05/15</span>
+                    </div>
+                </div>
+                
+                <div class="info-grid" style="margin-bottom: 20px;">
+                    <div class="info-item">
+                        <div class="info-label">工地</div>
+                        <div class="info-value">大阪市示範屋</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">現場負責人</div>
+                        <div class="info-value">田中先生</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">聯絡電話</div>
+                        <div class="info-value">06-xxxx-xxxx</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">剩餘工期</div>
+                        <div class="info-value">約 6 週</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">📋 近期任務</div>
+                    <ul class="task-list">
+                        <li class="task-item">
+                            <div>
+                                <div style="font-weight: bold;">浴室防水工程</div>
+                                <div style="color: #666; font-size: 0.9em;">今天完成</div>
+                            </div>
+                            <span class="status-badge status-progress">進行中</span>
+                        </li>
+                        <li class="task-item">
+                            <div>
+                                <div style="font-weight: bold;">臥室隔間</div>
+                                <div style="color: #666; font-size: 0.9em;">明天完成</div>
+                            </div>
+                            <span class="status-badge status-pending">待處理</span>
+                        </li>
+                        <li class="task-item">
+                            <div>
+                                <div style="font-weight: bold;">廚房配電</div>
+                                <div style="color: #666; font-size: 0.9em;">後天完成</div>
+                            </div>
+                            <span class="status-badge status-pending">待處理</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 進度回報 -->
+            <div id="page-progress" style="display: none;">
+                <h1 class="page-title">📈 進度回報</h1>
+                
+                <div class="card">
+                    <div class="card-title">回報今日進度</div>
+                    <form>
+                        <div class="form-group">
+                            <label class="form-label">日期</label>
+                            <input type="date" class="form-input" value="2026-02-27">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">工事項目</label>
+                            <select class="form-select">
+                                <option>請選擇...</option>
+                                <option>浴室防水</option>
+                                <option>牆面工程</option>
+                                <option>配電工程</option>
+                                <option>地板鋪設</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">進度說明</label>
+                            <textarea class="form-textarea" rows="4" placeholder="描述今日完成的工作..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">完成百分比</label>
+                            <input type="range" min="0" max="100" value="50" style="width: 100%;">
+                            <div style="text-align: center;">50%</div>
+                        </div>
+                        <button type="button" class="btn btn-primary">提交進度</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- 問題回報 -->
+            <div id="page-report" style="display: none;">
+                <h1 class="page-title">📋 問題回報</h1>
+                
+                <div class="card">
+                    <div class="card-title">回報問題</div>
+                    <form>
+                        <div class="form-group">
+                            <label class="form-label">問題類型</label>
+                            <select class="form-select">
+                                <option>請選擇...</option>
+                                <option>材料問題</option>
+                                <option>施工問題</option>
+                                <option>安全問題</option>
+                                <option>設計問題</option>
+                                <option>其他</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">緊急程度</label>
+                            <select class="form-select">
+                                <option>一般</option>
+                                <option>緊急</option>
+                                <option>非常緊急</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">問題描述</label>
+                            <textarea class="form-textarea" rows="4" placeholder="詳細描述問題..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">上傳照片</label>
+                            <input type="file" accept="image/*" multiple>
+                        </div>
+                        <button type="button" class="btn btn-primary">提交問題</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- 材料申請 -->
+            <div id="page-material" style="display: none;">
+                <h1 class="page-title">🛒 材料申請</h1>
+                
+                <div class="card">
+                    <div class="card-title">申請材料</div>
+                    <form>
+                        <div class="form-group">
+                            <label class="form-label">材料名稱</label>
+                            <input type="text" class="form-input" placeholder="請輸入材料名稱">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">數量</label>
+                            <input type="number" class="form-input" placeholder="數量">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">用途說明</label>
+                            <textarea class="form-textarea" rows="3" placeholder="說明使用用途..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">需要日期</label>
+                            <input type="date" class="form-input">
+                        </div>
+                        <button type="button" class="btn btn-primary">提交申請</button>
+                    </form>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">📦 申請紀錄</div>
+                    <ul class="task-list">
+                        <li class="task-item">
+                            <div>
+                                <div style="font-weight: bold;">水泥 10包</div>
+                                <div style="color: #666; font-size: 0.9em;">2026/02/25 申請</div>
+                            </div>
+                            <span class="status-badge status-done">已核准</span>
+                        </li>
+                        <li class="task-item">
+                            <div>
+                                <div style="font-weight: bold;">防水材 5桶</div style="color:>
+                                <div #666; font-size: 0.9em;">2026/02/26 申請</div>
+                            </div>
+                            <span class="status-badge status-progress">審核中</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 施工拍照 -->
+            <div id="page-photos" style="display: none;">
+                <h1 class="page-title">📷 施工拍照</h1>
+                
+                <div class="card">
+                    <div class="card-title">上傳施工照片</div>
+                    <div class="form-group">
+                        <label class="form-label">選擇照片</label>
+                        <input type="file" accept="image/*" multiple>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">照片說明</label>
+                        <textarea class="form-textarea" rows="2" placeholder="描述這张照片..."></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary">上傳照片</button>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">📸 近期照片</div>
+                    <div class="photo-grid">
+                        <div class="photo-item">🖼️</div>
+                        <div class="photo-item">🖼️</div>
+                        <div class="photo-item">🖼️</div>
+                        <div class="photo-item">🖼️</div>
+                        <div class="photo-item">🖼️</div>
+                        <div class="photo-item">🖼️</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 工程圖面 -->
+            <div id="page-plans" style="display: none;">
+                <h1 class="page-title">📐 工程圖面</h1>
+                <div class="card">
+                    <div class="card-title">下載圖面</div>
+                    <ul class="task-list">
+                        <li class="task-item">
+                            <div>
+                                <div style="font-weight: bold;">平面配置圖</div>
+                                <div style="color: #666; font-size: 0.9em;">PDF - 2.5MB</div>
+                            </div>
+                            <button class="btn btn-primary">下載</button>
+                        </li>
+                        <li class="task-item">
+                            <div>
+                                <div style="font-weight: bold;">水電配置圖</div>
+                                <div style="color: #666; font-size: 0.9em;">PDF - 1.8MB</div>
+                            </div>
+                            <button class="btn btn-primary">下載</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 施工規範 -->
+            <div id="page-specs" style="display: none;">
+                <h1 class="page-title">📝 施工規範</h1>
+                <div class="card">
+                    <div class="card-title">規範文件</div>
+                    <ul class="task-list">
+                        <li class="task-item">
+                            <div>
+                                <div style="font-weight: bold;">日本建築基準法概要</div>
+                                <div style="color: #666; font-size: 0.9em;">PDF</div>
+                            </div>
+                            <button class="btn btn-primary">查看</button>
+                        </li>
+                        <li class="task-item">
+                            <div>
+                                <div style="font-weight: bold;">防水工程規範</div>
+                                <div style="color: #666; font-size: 0.9em;">PDF</div>
+                            </div>
+                            <button class="btn btn-primary">查看</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 薪資查詢 -->
+            <div id="page-salary" style="display: none;">
+                <h1 class="page-title">💵 薪資查詢</h1>
+                <div class="card">
+                    <div class="card-title">2026年2月</div>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">出勤日數</div>
+                            <div class="info-value">20 天</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">基本薪資</div>
+                            <div class="info-value">¥280,000</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">加班費</div>
+                            <div class="info-value">¥25,000</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">應發金額</div>
+                            <div class="info-value">¥305,000</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 個人資料 -->
+            <div id="page-profile" style="display: none;">
+                <h1 class="page-title">👤 個人資料</h1>
+                <div class="card">
+                    <div class="card-title">個人資訊</div>
+                    <div class="form-group">
+                        <label class="form-label">姓名</label>
+                        <input type="text" class="form-input" value="田中太郎">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">電話</label>
+                        <input type="tel" class="form-input" value="090-xxxx-xxxx">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">LINE ID</label>
+                        <input type="text" class="form-input" value="tanaka_t">
+                    </div>
+                    <button type="button" class="btn btn-primary">更新資料</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showPage(pageId) {
+            const pages = ['dashboard', 'progress', 'report', 'material', 'photos', 'plans', 'specs', 'salary', 'profile'];
+            pages.forEach(p => {
+                document.getElementById('page-' + p).style.display = 'none';
+            });
+            
+            document.getElementById('page-' + pageId).style.display = 'block';
+            
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.closest('.menu-item').classList.add('active');
+        }
+    </script>
+</body>
+</html>

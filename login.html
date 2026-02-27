@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>林博御裝修系統 - 登入</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .login-container {
+            width: 100%;
+            max-width: 450px;
+        }
+        
+        .login-box {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo-icon {
+            font-size: 4em;
+            margin-bottom: 10px;
+        }
+        
+        .logo-text {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #1a1a2e;
+        }
+        
+        .logo-subtitle {
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+        
+        .links a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .links a:hover {
+            text-decoration: underline;
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            color: #999;
+            position: relative;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: #e0e0e0;
+        }
+        
+        .divider::before {
+            left: 0;
+        }
+        
+        .divider::after {
+            right: 0;
+        }
+        
+        .user-type-select {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .user-type-option {
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .user-type-option:hover {
+            border-color: #667eea;
+        }
+        
+        .user-type-option.active {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+        
+        .user-type-option input {
+            display: none;
+        }
+        
+        .user-type-icon {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+        
+        .user-type-name {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .user-type-desc {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 3px;
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .alert-error {
+            background: #fee;
+            color: #c00;
+            border: 1px solid #fcc;
+        }
+        
+        .alert-success {
+            background: #efe;
+            color: #060;
+            border: #cfc;
+        }
+        
+        @media (max-width: 480px) {
+            .login-box {
+                padding: 25px;
+            }
+            
+            .user-type-select {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo">
+                <div class="logo-icon">🏠</div>
+                <div class="logo-text">林博御裝修系統</div>
+                <div class="logo-subtitle">登入您的帳號</div>
+            </div>
+            
+            <div id="alert" class="alert"></div>
+            
+            <!-- 登入表單 -->
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">帳號類型</label>
+                    <div class="user-type-select">
+                        <label class="user-type-option active">
+                            <input type="radio" name="userType" value="client" checked>
+                            <div class="user-type-icon">👀</div>
+                            <div class="user-type-name">客戶瀏覽</div>
+                            <div class="user-type-desc">參觀施工品質</div>
+                        </label>
+                        <label class="user-type-option">
+                            <input type="radio" name="userType" value="worker">
+                            <div class="user-type-icon">👷</div>
+                            <div class="user-type-name">工班</div>
+                            <div class="user-type-desc">施工團隊專用</div>
+                        </label>
+                        <label class="user-type-option">
+                            <input type="radio" name="userType" value="agent">
+                            <div class="user-type-icon">🤝</div>
+                            <div class="user-type-name">中介</div>
+                            <div class="user-type-desc">業務介紹</div>
+                        </label>
+                        <label class="user-type-option">
+                            <input type="radio" name="userType" value="admin">
+                            <div class="user-type-icon">⚙️</div>
+                            <div class="user-type-name">管理員</div>
+                            <div class="user-type-desc">系統管理</div>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email / 電話</label>
+                    <input type="text" class="form-input" id="username" placeholder="請輸入Email或電話" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">密碼</label>
+                    <input type="password" class="form-input" id="password" placeholder="請輸入密碼" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">登 入</button>
+            </form>
+            
+            <div class="links">
+                <a href="#" onclick="showForgotPassword()">忘記密碼？</a>
+                <a href="#" onclick="showRegister()">註冊新帳號</a>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 20px; color: white; opacity: 0.7;">
+            <p>© 2026 林博御裝修系統</p>
+            <p style="font-size: 0.9em; margin-top: 5px;">
+                <a href="index.html" style="color: white;">回首頁</a>
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // 用戶類型選擇
+        const userTypeOptions = document.querySelectorAll('.user-type-option');
+        userTypeOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                userTypeOptions.forEach(o => o.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        // 登入表單提交
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const userType = document.querySelector('input[name="userType"]:checked').value;
+            
+            // 演示模式：直接跳轉
+            if (username && password) {
+                // 根據用戶類型跳轉
+                const redirects = {
+                    'client': 'client/index.html',
+                    'worker': 'worker/index.html',
+                    'agent': 'agent/index.html',
+                    'admin': 'admin/index.html'
+                };
+                
+                // 顯示成功訊息
+                showAlert('登入成功！正在跳轉...', 'success');
+                
+                setTimeout(() => {
+                    window.location.href = redirects[userType];
+                }, 1000);
+            } else {
+                showAlert('請填寫完整登入資訊', 'error');
+            }
+        });
+        
+        function showAlert(message, type) {
+            const alert = document.getElementById('alert');
+            alert.textContent = message;
+            alert.className = 'alert alert-' + type;
+            alert.style.display = 'block';
+            
+            if (type === 'success') {
+                setTimeout(() => {
+                    alert.style.display = 'none';
+                }, 3000);
+            }
+        }
+        
+        function showForgotPassword() {
+            alert('請聯繫管理員重設密碼');
+        }
+        
+        function showRegister() {
+            alert('請聯繫管理員申請帳號');
+        }
+    </script>
+</body>
+</html>

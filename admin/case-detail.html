@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>案例分析詳情 - 林博御裝修系統</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Sans TC",sans-serif;background:#f5f5f5;padding:20px}
+.container{max-width:1200px;margin:0 auto}
+.header{background:linear-gradient(135deg,#4facfe,#00f2fe);color:#fff;padding:30px;border-radius:15px;margin-bottom:30px}
+.header h1{font-size:2em;margin-bottom:10px}
+.badge{background:linear-gradient(135deg,#f093fb,#f5576c);color:#fff;padding:5px 15px;border-radius:20px;font-size:0.8em;margin-left:10px}
+.card{background:#fff;border-radius:15px;padding:25px;margin-bottom:20px;box-shadow:0 5px 15px}
+.card-title{font-size:1.3em;font-weight:bold;margin-bottom:15px}
+.price{font-size:2em;font-weight:bold;color:#4facfe}
+.normal{color:#28a745}.warning{color:#ffc107}.cheap{color:#17a2b8}
+table{width:100%;border-collapse:collapse;margin:15px 0}
+th,td{padding:12px;text-align:left;border-bottom:1px solid #eee}
+th{background:#f9f9f9}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin:15px 0}
+.info-box{background:#f8f9fa;padding:15px;border-radius:10px;text-align:center}
+.info-box .num{font-size:1.8em;font-weight:bold;color:#4facfe}
+.info-box .label{color:#666}
+.btn-back{padding:15px 25px;background:linear-gradient(135deg,#4facfe,#00f2fe);color:#fff;border:none;border-radius:30px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>個案分析報告 - 大阪安立2-10-29 一戶建裝修 <span class="badge">VIP</span></h1>
+<p>分析日期：2026年2月 | 物件類型：一戶建（獨立住宅）</p>
+</div>
+<div class="card">
+<div class="card-title">價格總覽</div>
+<div class="info-grid">
+<div class="info-box"><div class="num">3,550,140</div><div class="label">總報價含稅</div></div>
+<div class="info-box"><div class="num">3,227,400</div><div class="label">未稅總額</div></div>
+</div>
+</div>
+<div class="card">
+<div class="card-title">價格評估結果</div>
+<div class="info-grid">
+<div class="info-box"><div class="num normal">43項</div><div class="label">正常</div></div>
+<div class="info-box"><div class="num warning">4項</div><div class="label">偏高可議價</div></div>
+</div>
+</div>
+<div class="card">
+<div class="card-title">可議價項目</div>
+<table>
+<tr><th>項目</th><th>報價</th><th>建議議價</th><th>可省</th></tr>
+<tr><td>搬入搬出</td><td>80,000</td><td class="warning">55,000</td><td>25,000</td></tr>
+<tr><td>解體垃圾處理</td><td>120,000</td><td class="warning">80,000</td><td>40,000</td></tr>
+<tr><td>1階壁紙</td><td>180,000</td><td class="warning">140,000</td><td>40,000</td></tr>
+<tr><td>交通費</td><td>100,000</td><td class="warning">60,000</td><td>40,000</td></tr>
+<tr style="background:#f0f0f0"><td><strong>合計可議價</strong></td><td></td><td></td><td class="warning"><strong>145,000</strong></td></tr>
+</table>
+</div>
+<div class="card">
+<div class="card-title">大阪替代業者資源</div>
+<h4>DIY支援</h4>
+<p>株式会社エビス（東大阪市）- ebisu-renovation-diy.com</p>
+<h4>師傅配對平台</h4>
+<p>ミツモア - meetsmore.com</p>
+<p>CraftBank - craft-bank.com</p>
+<h4>不用品回收</h4>
+<p>関西クリーンサービス - 1LDK約60,000起</p>
+<p>大阪不用品回収ゼロ - 基本6,500起</p>
+</div>
+<button class="btn-back" onclick="history.back()">返回</button>
+</div>
+</body>
+</html>

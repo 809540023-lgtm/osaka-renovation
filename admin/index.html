@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>管理員專區 - 林博御裝修系統</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Sans TC",sans-serif;background:#f5f5f5}
+.header{background:linear-gradient(135deg,#4facfe,#00f2fe);color:#fff;padding:20px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:2em}
+.header-title{font-size:1.4em;font-weight:bold}
+.btn-logout{padding:8px 15px;background:rgba(255,255,255,0.2);border:none;border-radius:5px;color:#fff;cursor:pointer}
+.container{display:flex;min-height:calc(100vh - 70px)}
+.sidebar{width:250px;background:#fff;padding:20px;box-shadow:2px 0 5px rgba(0,0,0,0.1)}
+.menu-title{color:#999;font-size:0.8em;margin:20px 0 10px;text-transform:uppercase}
+.menu-item{padding:12px 15px;margin-bottom:5px;border-radius:8px;cursor:pointer}
+.menu-item:hover{background:#f0f0f0}
+.menu-item.active{background:linear-gradient(135deg,#4facfe,#00f2fe);color:#fff}
+.menu-item.vip{background:linear-gradient(135deg,#f093fb,#f5576c);color:#fff}
+.main{flex:1;padding:30px}
+.page-title{font-size:1.8em;margin-bottom:20px;color:#333}
+.card{background:#fff;border-radius:15px;padding:25px;margin-bottom:20px;box-shadow:0 5px 15px rgba(0,0,0,0.1)}
+.card-title{font-size:1.2em;font-weight:bold;margin-bottom:15px}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px;margin-bottom:20px}
+.stat-card{background:#fff;border-radius:15px;padding:20px;text-align:center;box-shadow:0 5px 15px}
+.stat-number{font-size:2em;font-weight:bold;color:#4facfe}
+.stat-label{color:#666;margin-top:5px;font-size:0.9em}
+.btn{padding:10px 20px;border:none;border-radius:8px;cursor:pointer;font-weight:bold}
+.btn-primary{background:linear-gradient(135deg,#4facfe,#00f2fe);color:#fff}
+.btn-vip{background:linear-gradient(135deg,#f093fb,#f5576c);color:#fff}
+.form-group{margin-bottom:15px}
+.form-label{display:block;margin-bottom:5px;font-weight:bold}
+.form-input,.form-select{width:100%;padding:12px;border:1px solid #ddd;border-radius:8px}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:12px;text-align:left;border-bottom:1px solid #eee}
+.table th{background:#f9f9f9}
+.case-card{border:2px solid #eee;border-radius:15px;padding:20px;margin-bottom:15px}
+.case-header{display:flex;justify-content:space-between;align-items:center}
+.case-price{font-size:1.3em;font-weight:bold;color:#4facfe}
+.case-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+.tag{padding:3px 10px;background:#f0f0f0;border-radius:15px;font-size:0.8em}
+.analysis-section{background:#f8f9fa;border-radius:10px;padding:15px;margin-top:15px}
+.analysis-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee}
+.normal{color:#28a745}.warning{color:#ffc107}.cheap{color:#17a2b8}
+.vip-badge{background:linear-gradient(135deg,#f093fb,#f5576c);color:#fff;padding:2px 8px;border-radius:10px;font-size:0.7em;margin-left:5px}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo">⚙️</div>
+<div class="header-title">林博御裝修 - 管理系統</div>
+<button class="btn-logout" onclick="location.href='../login.html'">登出</button>
+</div>
+<div class="container">
+<div class="sidebar">
+<div class="menu-title">總覽</div>
+<div class="menu-item active" onclick="showPage('dashboard')">📊 系統儀表板</div>
+<div class="menu-title">會員</div>
+<div class="menu-item" onclick="showPage('users')">👥 會員管理</div>
+<div class="menu-item" onclick="showPage('add-user')">➕ 新增會員</div>
+<div class="menu-title">💰 付費功能</div>
+<div class="menu-item vip" onclick="showPage('case-analysis')">📈 案例上傳分析 <span class="vip-badge">VIP</span></div>
+<div class="menu-title">工程</div>
+<div class="menu-item" onclick="showPage('projects')">🏠 工程管理</div>
+<div class="menu-title">財務</div>
+<div class="menu-item" onclick="showPage('finance')">💵 財務管理</div>
+<div class="menu-title">系統</div>
+<div class="menu-item" onclick="showPage('settings')">⚙️ 系統設定</div>
+</div>
+<div class="main">
+<div id="page-dashboard">
+<h1 class="page-title">📊 系統儀表板</h1>
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-number">4</div><div class="stat-label">會員總數</div></div>
+<div class="stat-card"><div class="stat-number">1</div><div class="stat-label">進行中工程</div></div>
+<div class="stat-card"><div class="stat-number">¥3.55M</div><div class="stat-label">總工程額</div></div>
+<div class="stat-card"><div class="stat-number">¥1.2M</div><div class="stat-label">補助總額</div></div>
+</div>
+<div class="card"><div class="card-title">📈 近期活動</div>
+<table class="table"><thead><tr><th>時間</th><th>動作</th><th>人員</th></tr></thead>
+<tbody><tr><td>2026/02/27 10:00</td><td>登入系統</td><td>芝姐</td></tr>
+<tr><td>2026/02/27 09:30</td><td>工程進度更新</td><td>田中</td></tr>
+<tr><td>2026/02/26 15:00</td><td>新增案例分析</td><td>芝姐</td></tr></tbody></table></div>
+</div>
+<div id="page-users" style="display:none">
+<h1 class="page-title">👥 會員管理</h1>
+<div class="card"><div class="card-title">會員列表</div>
+<table class="table"><thead><tr><th>帳號</th><th>姓名</th><th>類型</th><th>狀態</th><th>操作</th></tr></thead>
+<tbody><tr><td>client001</td><td>訪客客戶</td><td>客戶瀏覽</td><td><span style="background:#d4edda;padding:3px 10px;border-radius:10px">正常</span></td><td><button class="btn btn-primary" style="padding:5px 10px;font-size:0.8em">編輯</button></td></tr>
+<tr><td>worker001</td><td>田中太郎</td><td>工班</td><td><span style="background:#d4edda;padding:3px 10px;border-radius:10px">正常</span></td><td><button class="btn btn-primary" style="padding:5px 10px;font-size:0.8em">編輯</button></td></tr>
+<tr><td>agent001</td><td>業務夥伴</td><td>中介</td><td><span style="background:#d4edda;padding:3px 10px;border-radius:10px">正常</span></td><td><button class="btn btn-primary" style="padding:5px 10px;font-size:0.8em">編輯</button></td></tr>
+<tr><td>admin001</td><td>芝姐</td><td>👑超級管理員</td><td><span style="background:#d4edda;padding:3px 10px;border-radius:10px">正常</span></td><td><button class="btn btn-primary" style="padding:5px 10px;font-size:0.8em">編輯</button></td></tr></tbody></table></div>
+</div>
+<div id="page-add-user" style="display:none">
+<h1 class="page-title">➕ 新增會員</h1>
+<div class="card"><div class="card-title">建立新帳號</div>
+<form><div class="form-group"><label class="form-label">帳號類型</label>
+<select class="form-select"><option>客戶瀏覽</option><option>工班</option><option>中介</option><option>管理員</option></select></div>
+<div class="form-group"><label class="form-label">姓名</label><input type="text" class="form-input"></div>
+<div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input"></div>
+<div class="form-group"><label class="form-label">密碼</label><input type="password" class="form-input"></div><button class="btn btn-primary">建立帳號</button></form></div></div>
+<div id="page-case-analysis" style="display:none">
+<h1 class="page-title">📈 案例上傳分析 <span class="vip-badge">VIP專屬</span></h1>
+<div class="card"><div class="card-title">💰 付費會員專屬功能</div>
+<p style="color:#666;margin-bottom:15px">上傳估價單，由 AI 為您分析價格合理性並提供議價建議</p>
+<div style="background:#f8f9fa;padding:15px;border-radius:10px;margin-bottom:15px"><strong>可使用權限：</strong> <span style="background:linear-gradient(135deg,#f093fb,#f5576c);color:#fff;padding:3px 10px;border-radius:10px;margin:0 5px">👑 超級管理員</span> <span style="background:linear-gradient(135deg,#4facfe,#00f2fe);color:#fff;padding:3px 10px;border-radius:10px;margin:0 5px">⚙️ 管理員</span> <span style="background:linear-gradient(135deg,#f093fb,#f5576c);color:#fff;padding:3px 10px;border-radius:10px;margin:0 5px">🤝 中介(付費)</span></div>
+<div class="form-group"><label class="form-label">上傳估價單 (PDF/圖片)</label><input type="file" accept=".pdf,.jpg,.png" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:8px"></div><button class="btn btn-vip">🔍 分析估價單</button></div>
+<div class="card"><div class="card-title">📊 已分析案例</div>
+<div class="case-card"><div class="case-header"><div><div class="case-title">大阪安立2-10-29 一戶建裝修</div><div class="case-tags"><span class="tag">一戶建</span><span class="tag">大阪市</span><span class="tag">2026/02</span></div></div><div class="case-price">¥3,550,140</div></div>
+<div class="analysis-section"><div class="analysis-row"><span>✅ 正常價格</span><span class="normal">43項</span></div><div class="analysis-row"><span>⚠️ 偏高可議價</span><span class="warning">4項</span></div><div class="analysis-row"><span>💰 建議議價總額</span><span class="warning">¥145,000</span></div><div class="analysis-row"><span>📉 議價後價格</span><span class="normal">¥3,405,140</span></div></div>
+<div style="margin-top:15px"><a href="case-detail.html" class="btn btn-vip" style="font-size:0.9em;padding:8px 15px;text-decoration:none;display:inline-block">查看詳細分析</a></div>
+<div style="background:#f8f9fa;padding:15px;border-radius:10px;margin-top:15px">
+<h4 style="margin-bottom:10px">📋 詳細分析內容：</h4>
+<ul style="margin-left:20px;line-height:1.8">
+<li>浴室・廁所・洗面：¥987,200 (30.6%)</li>
+<li>2階和室改造：¥598,000 (18.5%)</li>
+<li>1階部屋改造：¥374,200 (11.6%)</li>
+<li>諸経費：¥300,000 (9.3%)</li>
+<li>空調設備：¥303,000 (9.4%)</li>
+<li>可議價項目：搬入搬出¥80,000→¥55,000、解體垃圾處理¥120,000→¥80,000、1階壁紙¥180,000→¥140,000、交通費¥100,000→¥60,000</li>
+</ul></div></div>
+<div class="case-card"><div class="case-header"><div><div class="case-title">天王寺區公寓翻新</div><div class="case-tags"><span class="tag">公寓</span><span class="tag">天王寺區</span></div></div><div class="case-price">¥2,180,000</div></div></div></div>
+<div id="page-projects" style="display:none"><h1 class="page-title">🏠 工程管理</h1>
+<div class="card"><div class="card-title">進行中工程</div><table class="table"><thead><tr><th>工程名稱</th><th>地點</th><th>進度</th><th>狀態</th></tr></thead><tbody><tr><td>大阪市示範屋</td><td>安立2-10-29</td><td><div style="background:#e0e0e0;height:20px;border-radius:10px;width:150px"><div style="background:linear-gradient(135deg,#4facfe,#00f2fe);height:100%;width:65%;border-radius:10px"></div></div></td><td>進行中</td></tr></tbody></table></div></div>
+<div id="page-finance" style="display:none"><h1 class="page-title">💵 財務管理</h1>
+<div class="stats-grid"><div class="stat-card"><div class="stat-number">¥3.55M</div><div class="stat-label">總收入</div></div><div class="stat-card"><div class="stat-number">¥2.1M</div><div class="stat-label">支出</div></div><div class="stat-card"><div class="stat-number">¥1.45M</div><div class="stat-label">利潤</div></div></div></div>
+<div id="page-settings" style="display:none"><h1 class="page-title">⚙️ 系統設定</h1>
+<div class="card"><div class="card-title">基本設定</div><div class="form-group"><label class="form-label">系統名稱</label><input type="text" class="form-input" value="林博御裝修系統"></div><div class="form-group"><label class="form-label">聯絡Email</label><input type="email" class="form-input" value="linbo@example.com"></div><button class="btn btn-primary">儲存設定</button></div></div></div>
+<script>function showPage(id){document.querySelectorAll('.main>div').forEach(d=>d.style.display='none');document.getElementById('page-'+id).style.display='block';document.querySelectorAll('.menu-item').forEach(m=>m.classList.remove('active'));event.target.classList.add('active')}</script></div></div></body></html>
