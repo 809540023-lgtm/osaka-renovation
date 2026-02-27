@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>驗收流程 - 林博御裝修</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#667eea;--secondary:#764ba2;--success:#28a745;--warning:#ffc107;--danger:#dc3545;--light:#f8f9fa;--dark:#343a40}
+body{font-family:"Noto Sans TC",sans-serif;background:linear-gradient(135deg,#667eea,#764ba2);min-height:100vh;padding:20px}
+.container{max-width:900px;margin:0 auto}
+.header{background:var(--light);border-radius:20px;padding:30px;text-align:center;margin-bottom:20px;box-shadow:0 10px30px rgba(0,0,0,0.2)}
+.header h1{font-size:2em;color:var(--dark);margin-bottom:10px}
+.header p{color:#666}
+.progress{display:flex;justify-content:space-between;margin:30px 0;position:relative}
+.progress::before{content:'';position:absolute;top:20px;left:0;right:0;height:4px;background:#ddd;z-index:0}
+.progress-step{position:relative;z-index:1;background:var(--light);width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;color:#999;border:3px solid #ddd}
+.progress-step.active{background:var(--primary);color:var(--light);border-color:var(--primary)}
+.progress-step.completed{background:var(--success);color:var(--light);border-color:var(--success)}
+.stage{background:var(--light);border-radius:20px;padding:25px;margin-bottom:20px;box-shadow:0 10px30px rgba(0,0,0,0.2)}
+.stage-header{display:flex;align-items:center;gap:15px;margin-bottom:20px;padding-bottom:15px;border-bottom:2px solid #eee}
+.stage-num{width:40px;height:40px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:var(--light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold}
+.stage-title{font-size:1.3em;color:var(--dark)}
+.checklist{list-style:none}
+.checklist li{margin-bottom:15px;padding:15px;background:#f8f9fa;border-radius:10px;border-left:4px solid var(--primary)}
+.checklist li.checked{background:#d4edda;border-left-color:var(--success)}
+.check-item{display:flex;align-items:flex-start;gap:10px;cursor:pointer}
+.check-item input[type="checkbox"]{width:20px;height:20px;margin-top:3px}
+.check-content{flex:1}
+.check-title{font-weight:bold;color:var(--dark);margin-bottom:5px}
+.check-sub{font-size:0.9em;color:#666;margin-left:10px}
+.status-row{display:flex;gap:20px;margin-top:15px;padding-top:15px;border-top:1px solid #ddd}
+.status-option{display:flex;align-items:center;gap:8px}
+.status-option input{width:18px;height:18px}
+.btn{background:linear-gradient(135deg,var(--primary),var(--secondary));color:var(--light);border:none;padding:15px 30px;border-radius:25px;font-size:1em;font-weight:bold;cursor:pointer;margin:10px 5px}
+.btn:hover{transform:scale(1.05)}
+.back-link{display:inline-block;margin-bottom:20px;color:var(--light);text-decoration:none;font-size:1.1em}
+.summary{background:var(--light);border-radius:20px;padding:25px;margin-top:20px}
+.summary h2{color:var(--dark);margin-bottom:15px}
+.summary-item{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #eee}
+.summary-item:last-child{border:none}
+.summary-total{font-size:1.3em;font-weight:bold;color:var(--primary)}
+@media(max-width:600px){
+.progress{display:none}
+.stage{padding:15px}
+.checklist li{padding:10px}
+}
+</style>
+</head>
+<body>
+<a href="index.html" class="back-link">← 返回首頁</a>
+<div class="container">
+<div class="header">
+<h1>📋 驗收流程系統</h1>
+<p>大阪裝修工程 - 5階段驗收</p>
+</div>
+
+<!-- 進度條 -->
+<div class="progress">
+<div class="progress-step" id="step1">1</div>
+<div class="progress-step" id="step2">2</div>
+<div class="progress-step" id="step3">3</div>
+<div class="progress-step" id="step4">4</div>
+<div class="progress-step" id="step5">5</div>
+</div>
+
+<!-- 階段一：拆除工程 -->
+<div class="stage" id="stage1">
+<div class="stage-header">
+<div class="stage-num">1</div>
+<div class="stage-title">🔨 拆除工程驗收</div>
+</div>
+<ul class="checklist">
+<li>
+<label class="check-item">
+<input type="checkbox" onchange="toggleCheck(this)">
+<div class="check-content">
+<div class="check-title">□ 和室拆除</div>
+<div class="check-sub">榻榻米已完全移除 · 骨架結構無損傷 · 甲醛異味已清除</div>
+</div>
+</label>
+</li>
+<li>
+<label class="check-item">
+<input type="checkbox" onchange="toggleCheck(this)">
+<div class="check-content">
+<div class="check-title">□ 廚房收納拆除</div>
+<div class="check-sub">舊有管線已標記 · 牆面結構完整 · 電源位置已記錄</div>
+</div>
+</label>
+</li>
+<li>
+<label class="check-item">
+<input type="checkbox" onchange="toggleCheck(this)">
+<div class="check-content">
+<div class="check-title">□ 浴室部分拆除</div>
+<div class="check-sub">浴缸/淋浴間已移除 · 排水管已封閉 · 防水層已確認</div>
+</div>
+</label>
+</li>
+<li>
+<label class="check-item">
+<input type="checkbox" onchange="toggleCheck(this)">
+<div class="check-content">
+<div class="check-title">□ 垃圾清除</div>
+<div class="check-sub">裝修廢棄物已清除 · 環境已復原</div>
+</div>
+</label>
+</li>
+</ul>
+<div class="status-row">
+<div class="status-option"><input type="radio" name="s1"> ✅ 合格</div>
+<div class="status-option"><input type="radio" name="s1"> ⚠️ 需改善</div>
+</div>
+<button class="btn" onclick="nextStage(1)">下一階段 →</button>
+</div>
+
+<!-- 階段二：水電工程 -->
+<div class="stage" id="stage2" style="display:none">
+<div class="stage-header">
+<div class="stage-num">2</div>
+<div class="stage-title">💧 水電工程驗收</div>
+</div>
+<ul class="checklist">
+<li>
+<label class="check-item">
+<input type="checkbox" onchange="toggleCheck(this)">
+<div class="check-content">
+<div class="check-title">□ 給水工程</div>
+<div class="check-sub">水壓測試正常 · 無漏水 · 水質清澈</div>
+</div>
+</label>
+</li>
+<li>
+<label class="check-item">
+<input type="checkbox" onchange="toggleCheck(this)">
+<div class="check-content">
+<div class="check-title">□ 排水工程</div>
+<div class="check-sub">排水順暢 · 無堵塞 · 排水孔位置正確</div>
+</div>
+</label>
+</li>
+<li>
+<label class="check-item">
+<input type="checkbox" onchange="toggleCheck(this)">
+<div class="check-content">
+<div class="check-title">□ 電氣工程</div>
+<div class="check-sub">配電正確 · 插座供電正常 · 漏電保護正常</div>
+</div>
+</label>
+</li>
+<li>
+<label class="check-item">
+<input type="checkbox" onchange="toggleCheck(this)">
+<div class="check-content">
+<div class="check-title">□ 瓦斯管線</div>
+<div class="check-sub">管線無漏氣 · 瓦斯閥正常 · 接管符合規範</div>
+</div>
+</label>
+</li>
+</ul>
+<div class="status-row">
+<div class="status-option"><input type="radio" name="s2"> ✅ 合格</div>
+<div class="status-option"><input type="radio" name="s2"> ⚠️ 需改善</div>
+</div>
+<button class="btn" onclick="prevStage(2)">← 上一階段</button>
+<button class="btn" onclick="nextStage(2)">下一階段 →</button>
+</div>
+
+<!-- 階段三：泥作工程 -->
+<div class="stage" id="stage3" style="display:none">
+<div class="stage-header">
+<div class="stage-num">3</div>
+<div class="stage-title">🧱 泥作工程驗收</div>
+</div>
+<ul class="checklist">
+<li>
+<label class="check-item">
+<input type="checkbox" onchange="toggleCheck(this)">
+<div class="check-content">
+<div class="check-title">□ 防水工程</div>
+<div class="check-sub">防水層完整 · 24小時積水測試通過</div>
+</div>
+</label>
+</li>
+<li>
+<label class="check-item">
+<input type="checkbox" onchange="toggleCheck(this)">
+<div class="check-content">
+<div class="check-title">□ 磁磚鋪貼</div>
+<div class="check-sub">磁磚平整無空心 · 縫隙均勻 · 無破裂</div>
+</div>
+</label>
+</li>
+<li>
+<label class="check-item">
+<input type="checkbox" onchange="toggleCheck(this)">
+<div class="check-content">
+<div class="check-title">□ 水泥粉刷</div>
+<div class="check-sub">牆面平整 · 無裂縫 · 乾燥完成</div>
+</div>
+</label>
+</li>
+</ul>
+<div class="status-row">
+<div class="status-option"><input type="radio" name="s3"> ✅ 合格</div>
+<div class="status-option"><input type="radio" name="s3"> ⚠️ 需改善</div>
+</div>
+<button class="btn" onclick="prevStage(3)">← 上一階段</button>
+<button class="btn" onclick="nextStage(3)">下一階段 →</button>
+</div>
+
+<!-- 階段四：設備安裝 -->
+<div class="stage" id="stage4" style="display:none">
+<div class="stage-header">
+<div class="stage-num">4</div>
+<div class="stage-title">🚿 設備安裝驗收</div>
+</div>
+<ul class="checklist">
+<li>
+<label class="check-item">
+<input type="checkbox" onchange="toggleCheck(this)">
+<div class="check-content">
+<div class="check-title">□ 衛浴設備</div>
+<div class="check-sub">馬桶正常 · 洗手台牢固 · 淋浴間防水</div>
+</div>
+</label>
+</li>
+<li>
+<label class="check-item">
+<input type="checkbox" onchange="toggleCheck(this)">
+<div class="check-content">
+<div class="check-title">□ 廚房設備</div>
+<div class="check-sub">流理台水平 · 爐具功能正常 · 排油煙機運作正常</div>
+</div>
+</label>
+</li>
+<li>
+<label class="check-item">
+<input type="checkbox" onchange="toggleCheck(this)">
+<div class="check-content">
+<div class="check-title">□ 空調設備</div>
+<div class="check-sub">冷氣運作正常 · 排水順暢 · 遙控器功能正常</div>
+</div>
+</label>
+</li>
+<li>
+<label class="check-item">
+<input type="checkbox" onchange="toggleCheck(this)">
+<div class="check-content">
+<div class="check-title">□ 燈具開關</div>
+<div class="check-sub">所有燈具正常 · 開關位置正確 · 亮度充足</div>
+</div>
+</label>
+</li>
+</ul>
+<div class="status-row">
+<div class="status-option"><input type="radio" name="s4"> ✅ 合格</div>
+<div class="status-option"><input type="radio" name="s4"> ⚠️ 需改善</div>
+</div>
+<button class="btn" onclick="prevStage(4)">← 上一階段</button>
+<button class="btn" onclick="nextStage(4)">下一階段 →</button>
+</div>
+
+<!-- 階段五：完工驗收 -->
+<div class="stage" id="stage5" style="display:none">
+<div class="stage-header">
+<div class="stage-num">5</div>
+<div class="stage-title">🎉 完工驗收</div>
+</div>
+<ul class="checklist">
+<li>
+<label class="check-item">
+<input type="checkbox" onchange="toggleCheck(this)">
+<div class="check-content">
+<div class="check-title">□ 整體清潔</div>
+<div class="check-sub">環境整潔 · 無施工殘留物</div>
+</div>
+</label>
+</li>
+<li>
+<label class="check-item">
+<input type="checkbox" onchange="toggleCheck(this)">
+<div class="check-content">
+<div class="check-title">□ 功能測試</div>
+<div class="check-sub">所有設備運作正常 · 水電正常</div>
+</div>
+</label>
+</li>
+<li>
+<label class="check-item">
+<input type="checkbox" onchange="toggleCheck(this)">
+<div class="check-content">
+<div class="check-title">□ 品質確認</div>
+<div class="check-sub">無明顯瑕疵 · 表面處理完好</div>
+</div>
+</label>
+</li>
+<li>
+<label class="check-item">
+<input type="checkbox" onchange="toggleCheck(this)">
+<div class="check-content">
+<div class="check-title">□ 文件交付</div>
+<div class="check-sub">保固書 · 竣工圖 · 使用說明</div>
+</div>
+</label>
+</li>
+</ul>
+<div class="status-row">
+<div class="status-option"><input type="radio" name="s5"> ✅ 合格</div>
+<div class="status-option"><input type="radio" name="s5"> ⚠️ 需改善</div>
+</div>
+<button class="btn" onclick="prevStage(5)">← 上一階段</button>
+<button class="btn" onclick="completeAll()">🎉 完成驗收</button>
+</div>
+
+<!-- 總結 -->
+<div class="summary" id="summary" style="display:none">
+<h2>📊 驗收總結</h2>
+<div class="summary-item"><span>拆除工程</span><span id="score1">0/4</span></div>
+<div class="summary-item"><span>水電工程</span><span id="score2">0/4</span></div>
+<div class="summary-item"><span>泥作工程</span><span id="score3">0/3</span></div>
+<div class="summary-item"><span>設備安裝</span><span id="score4">0/4</span></div>
+<div class="summary-item"><span>完工驗收</span><span id="score5">0/4</span></div>
+<div class="summary-item summary-total"><span>總完成度</span><span id="total">0%</span></div>
+<button class="btn" onclick="window.print()">🖨️ 列印驗收單</button>
+<button class="btn" onclick="location.reload()">🔄 重新驗收</button>
+</div>
+</div>
+
+<script>
+let currentStage=1;
+function showStage(n){
+for(let i=1;i<=5;i++){
+document.getElementById('stage'+i).style.display=(i===n)?'block':'none';
+document.getElementById('step'+i).className='progress-step'+(i<n?' completed':i===n?' active':'');
+}
+}
+function nextStage(s){
+if(s<5){currentStage=s+1;showStage(currentStage);}
+}
+function prevStage(s){
+if(s>1){currentStage=s-1;showStage(currentStage);}
+}
+function toggleCheck(cb){
+cb.closest('li').classList.toggle('checked',cb.checked);
+}
+function completeAll(){
+let total=0;
+for(let s=1;s<=5;s++){
+const checks=document.querySelectorAll('#stage'+s+' input[type="checkbox"]');
+let checked=0;
+checks.forEach(c=>{if(c.checked)checked++;total++;});
+document.getElementById('score'+s).innerHTML=checked+'/'+checks.length;
+}
+const percent=Math.round((total/19)*100);
+document.getElementById('total').innerHTML=percent+'%';
+document.getElementById('summary').style.display='block';
+alert('驗收完成！總完成度：'+percent+'%');
+}
+showStage(1);
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>施工規範 - 林博御裝修</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#667eea;--secondary:#764ba2;--success:#28a745;--warning:#ffc107;--danger:#dc3545;--light:#f8f9fa;--dark:#343a40}
+body{font-family:"Noto Sans TC",sans-serif;background:linear-gradient(135deg,#1a1a2e,#16213e);min-height:100vh;padding:20px}
+.container{max-width:900px;margin:0 auto}
+.header{background:var(--light);border-radius:20px;padding:30px;text-align:center;margin-bottom:20px;box-shadow:0 10px30px rgba(0,0,0,0.3)}
+.header h1{font-size:2em;color:var(--dark);margin-bottom:10px}
+.header .subtitle{color:#666}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}
+.card{background:var(--light);border-radius:15px;padding:20px;transition:all 0.3s;cursor:pointer;text-decoration:none;color:inherit;display:block}
+.card:hover{transform:translateY(-5px);box-shadow:0 15px30px rgba(0,0,0,0.3)}
+.card-icon{font-size:2.5em;margin-bottom:10px}
+.card-title{font-size:1.2em;font-weight:bold;color:var(--dark);margin-bottom:8px}
+.card-desc{color:#666;font-size:0.9em}
+.card:nth-child(1){border-left:5px solid var(--primary)}
+.card:nth-child(2){border-left:5px solid var(--success)}
+.card:nth-child(3){border-left:5px solid var(--warning)}
+.card:nth-child(4){border-left:5px solid var(--danger)}
+.card:nth-child(5){border-left:5px solid #17a2b8}
+.card:nth-child(6){border-left:5px solid #6f42c1}
+.info-box{background:var(--light);border-radius:15px;padding:25px;margin-top:20px}
+.info-box h2{color:var(--dark);margin-bottom:15px}
+.info-box ul{list-style:none}
+.info-box li{padding:12px 0;border-bottom:1px solid #eee;display:flex;align-items:center;gap:10px}
+.info-box li:last-child{border:none}
+.info-box .icon{font-size:1.3em}
+.back-link{display:inline-block;margin-bottom:20px;color:var(--light);text-decoration:none;font-size:1.1em}
+.alert{background:rgba(255,193,7,0.2);border:2px solid var(--warning);border-radius:10px;padding:15px;margin:20px 0;color:#fff}
+.alert-title{font-weight:bold;margin-bottom:5px}
+@media(max-width:600px){
+.cards{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<a href="index.html" class="back-link">← 返回首頁</a>
+<div class="container">
+<div class="header">
+<h1>⚖️ 施工規範手冊</h1>
+<p class="subtitle">日本大阪住宅裝修 - 法規與資格要求</p>
+</div>
+
+<div class="cards">
+<a href="日本施工合規手冊.md" class="card" target="_blank">
+<div class="card-icon">📋</div>
+<div class="card-title">法規總覽</div>
+<div class="card-desc">建設工程法、建築基準法等相關法規說明</div>
+</a>
+<a href="施工團隊編制表.md" class="card" target="_blank">
+<div class="card-icon">👷</div>
+<div class="card-title">團隊編制</div>
+<div class="card-desc">14人專業團隊編制與資格要求</div>
+</a>
+<a href="日本補助申請系統.md" class="card" target="_blank">
+<div class="card-icon">💰</div>
+<div class="card-title">補助申請</div>
+<div class="card-desc">大阪市、省能源、耐震補助說明</div>
+</a>
+<a href="示範屋團隊介紹.md" class="card" target="_blank">
+<div class="card-icon">🏆</div>
+<div class="card-title">團隊介紹</div>
+<div class="card-desc">示範屋施工團隊介紹</div>
+</a>
+<a href="大阪裝修完整計劃書.md" class="card" target="_blank">
+<div class="card-icon">📐</div>
+<div class="card-title">工程計劃書</div>
+<div class="card-desc">完整工程項目與費用明細</div>
+</a>
+<a href="估價單分析報告.md" class="card" target="_blank">
+<div class="card-icon">📊</div>
+<div class="card-title">估價分析</div>
+<div class="card-desc">估價單分析與議價建議</div>
+</a>
+</div>
+
+<div class="alert">
+<div class="alert-title">⚠️ 重要提醒</div>
+<div>所有施工必須符合日本建築基準法規定，建議聘請持有相關資格的專業人員進行監督。</div>
+</div>
+
+<div class="info-box">
+<h2>📌 快速導覽</h2>
+<ul>
+<li><span class="icon">✅</span> 建設工程法 - 確認施工許可</li>
+<li><span class="icon">✅</span> 建築基準法 - 確認建築規定</li>
+<li><span class="icon">✅</span> 消防法 - 消防設備要求</li>
+<li><span class="icon">✅</span> 勞動安全衛生法 - 施工安全</li>
+<li><span class="icon">✅</span> 環境規制法 - 噪音與廢棄物</li>
+</ul>
+</div>
+
+<div class="info-box">
+<h2>👷 必要人員資格</h2>
+<ul>
+<li><span class="icon">📜</span> 施工管理技師（建築士）</li>
+<li><span class="icon">⚡</span> 電氣工事士</li>
+<li><span class="icon">🔧</span> 配管工</li>
+<li><span class="icon">❄️</span> 空調設備士</li>
+<li><span class="icon">🪵</span> 大工（ 木匠）</li>
+</ul>
+</div>
+
+<div class="info-box">
+<h2>📄 必要文件</h2>
+<ul>
+<li><span class="icon">📝</span> 工程合約書</li>
+<li><span class="icon">📋</span> 施工計畫書</li>
+<li><span class="icon">🛡️</span> 保險證明</li>
+<li><span class="icon">🔏</span> 資格證照影本</li>
+<li><span class="icon">📷</span> 施工照片紀錄</li>
+</ul>
+</div>
+</div>
+</body>
+</html>

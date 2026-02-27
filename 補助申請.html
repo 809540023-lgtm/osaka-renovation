@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>補助申請 - 林博御裝修</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#667eea;--secondary:#764ba2;--success:#28a745;--warning:#ffc107;--light:#f8f9fa;--dark:#343a40}
+body{font-family:"Noto Sans TC",sans-serif;background:linear-gradient(135deg,#28a745,#20c997);min-height:100vh;padding:20px}
+.container{max-width:900px;margin:0 auto}
+.header{background:var(--light);border-radius:20px;padding:30px;text-align:center;margin-bottom:20px;box-shadow:0 10px30px rgba(0,0,0,0.3)}
+.header h1{font-size:2em;color:var(--dark);margin-bottom:10px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.card{background:var(--light);border-radius:15px;padding:25px;box-shadow:0 10px20px rgba(0,0,0,0.2)}
+.card-header{display:flex;align-items:center;gap:15px;margin-bottom:15px}
+.card-icon{font-size:2em}
+.card-title{font-size:1.3em;font-weight:bold;color:var(--dark)}
+.card-amount{background:linear-gradient(135deg,var(--success),#20c997);color:#fff;padding:15px;border-radius:10px;text-align:center;margin-bottom:15px}
+.card-amount .label{font-size:0.9em;opacity:0.9}
+.card-amount .money{font-size:2em;font-weight:bold}
+.card-desc{color:#666;margin-bottom:15px;line-height:1.6}
+.card-requirements{background:#f8f9fa;border-radius:10px;padding:15px;margin-bottom:15px}
+.card-requirements h4{color:var(--dark);margin-bottom:10px}
+.card-requirements ul{list-style:none;padding-left:0}
+.card-requirements li{padding:5px 0;color:#666}
+.card-requirements li::before{content:"✓ ";color:var(--success)}
+.btn{display:block;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;text-align:center;padding:15px;border-radius:10px;text-decoration:none;font-weight:bold;transition:all 0.3s}
+.btn:hover{transform:scale(1.02);box-shadow:0 5px15px rgba(0,0,0,0.3)}
+.back-link{display:inline-block;margin-bottom:20px;color:#fff;text-decoration:none;font-size:1.1em}
+.info-box{background:var(--light);border-radius:15px;padding:25px;margin-top:20px}
+.info-box h2{color:var(--dark);margin-bottom:15px}
+.info-box ul{list-style:none}
+.info-box li{padding:10px 0;border-bottom:1px solid #eee}
+</style>
+</head>
+<body>
+<a href="index.html" class="back-link">← 返回首頁</a>
+<div class="container">
+<div class="header">
+<h1>💰 補助申請系統</h1>
+<p>日本大阪住宅裝修 - 補助制度總覽</p>
+</div>
+
+<div class="cards">
+<div class="card">
+<div class="card-header">
+<div class="card-icon">🏠</div>
+<div class="card-title">空家利活用補助</div>
+</div>
+<div class="card-amount">
+<div class="label">最高補助</div>
+<div class="money">¥100萬</div>
+</div>
+<div class="card-desc">針對大阪市內空置住宅的活化利用，提供裝修費用補助。</div>
+<div class="card-requirements">
+<h4>申請條件：</h4>
+<ul>
+<li>大阪市內住宅</li>
+<li>5年以上空置</li>
+<li>裝修後自住或出租</li>
+</ul>
+</div>
+<a href="日本補助申請系統.md" class="btn" target="_blank">📝 詳細資訊</a>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div class="card-icon">⚡</div>
+<div class="card-title">省能源改修補助</div>
+</div>
+<div class="card-amount">
+<div class="label">最高補助</div>
+<div class="money">¥30萬</div>
+</div>
+<div class="card-desc">針對節能改修工程，如隔熱、太陽能發電設備等。</div>
+<div class="card-requirements">
+<h4>申請條件：</h4>
+<ul>
+<li>住宅用途</li>
+<li>符合節能標準</li>
+<li>完工後接受檢查</li>
+</ul>
+</div>
+<a href="日本補助申請系統.md" class="btn" target="_blank">📝 詳細資訊</a>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div class="card-icon">🏗️</div>
+<div class="card-title">耐震診斷補助</div>
+</div>
+<div class="card-amount">
+<div class="label">最高補助</div>
+<div class="money">¥5萬</div>
+</div>
+<div class="card-desc">老舊住宅的耐震診斷費用補助，1981年前建造優先。</div>
+<div class="card-requirements">
+<h4>申請條件：</h4>
+<ul>
+<li>1981年前建造</li>
+住宅</li>
+<li>未被診斷過</li>
+</ul>
+</div>
+<a href="日本補助申請系統.md" class="btn" target="_blank">📝 詳細資訊</a>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div class="card-icon">🔧</div>
+<div class="card-title">改修工事補助</div>
+</div>
+<div class="card-amount">
+<div class="label">最高補助</div>
+<div class="money">¥100萬</div>
+</div>
+<div class="card-desc">整體改修工事的補助，根據施工內容，最高可達100萬日圓。</div>
+<div class="card-requirements">
+<h4>申請條件：</h4>
+<ul>
+<li>大阪市內住宅</li>
+<li>符合改修標準</li>
+<li>有長期居住計畫</li>
+</ul>
+</div>
+<a href="日本補助申請系統.md" class="btn" target="_blank">📝 詳細資訊</a>
+</div>
+</div>
+
+<div class="info-box">
+<h2>📋 申請流程</h2>
+<ul>
+<li>1️⃣ 確認資格 - 評估是否符合補助條件</li>
+<li>2️⃣ 提交申請 - 準備相關文件</li>
+<li>3️⃣ 審核 - 市公所審查（約1-2個月）</li>
+<li>4️⃣ 核定 - 收到核定通知</li>
+<li>5️⃣ 施工 - 進行裝修工程</li>
+<li>6️⃣ 完工報告 - 提交完工報告</li>
+<li>7️⃣ 撥款 - 補助款項入帳</li>
+</ul>
+</div>
+</div>
+</body>
+</html>

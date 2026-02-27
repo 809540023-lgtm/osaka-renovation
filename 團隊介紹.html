@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>團隊介紹 - 林博御裝修</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#667eea;--secondary:#764ba2;--light:#f8f9fa;--dark:#343a40}
+body{font-family:"Noto Sans TC",sans-serif;background:linear-gradient(135deg,#667eea,#764ba2);min-height:100vh;padding:20px}
+.container{max-width:1000px;margin:0 auto}
+.header{background:var(--light);border-radius:20px;padding:30px;text-align:center;margin-bottom:20px;box-shadow:0 10px30px rgba(0,0,0,0.3)}
+.header h1{font-size:2.2em;color:var(--dark);margin-bottom:10px}
+.header .subtitle{color:#666;font-size:1.1em}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin:20px 0}
+.stat{background:var(--light);border-radius:15px;padding:20px;text-align:center}
+.stat-num{font-size:2em;font-weight:bold;color:var(--primary)}
+.stat-label{color:#666}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
+.member{background:var(--light);border-radius:15px;padding:20px;text-align:center;transition:all }
+.member:hover{0.3stransform:translateY(-5px);box-shadow:0 15px30px rgba(0,0,0,0.3)}
+.member-avatar{width:80px;height:80px;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:50%;margin:0 auto 15px;display:flex;align-items:center;justify-content:center;font-size:2em}
+.member-name{font-size:1.1em;font-weight:bold;color:var(--dark);margin-bottom:5px}
+.member-role{color:var(--primary);font-size:0.9em;margin-bottom:8px}
+.member-exp{color:#666;font-size:0.85em}
+.info-box{background:var(--light);border-radius:15px;padding:25px;margin-top:20px}
+.info-box h2{color:var(--dark);margin-bottom:15px}
+.info-box ul{list-style:none}
+.info-box li{padding:12px 0;border-bottom:1px solid #eee;display:flex;align-items:center;gap:10px}
+.back-link{display:inline-block;margin-bottom:20px;color:var(--light);text-decoration:none;font-size:1.1em}
+.process{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px;margin-top:20px}
+.step{background:var(--light);border-radius:15px;padding:20px;text-align:center}
+.step-num{width:40px;height:40px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;margin:0 auto 10px}
+.step-title{font-weight:bold;color:var(--dark)}
+@media(max-width:600px){
+.stats{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<a href="index.html" class="back-link">← 返回首頁</a>
+<div class="container">
+<div class="header">
+<h1>🏆 示範屋團隊</h1>
+<p class="subtitle">日本大阪住宅裝修 - 專業施工團隊</p>
+</div>
+
+<div class="stats">
+<div class="stat"><div class="stat-num">14</div><div class="stat-label">專業人員</div></div>
+<div class="stat"><div class="stat-num">12</div><div class="stat-label">週工期</div></div>
+<div class="stat"><div class="stat-num">100%</div><div class="stat-label">滿意度</div></div>
+<div class="stat"><div class="stat-num">50+</div><div class="stat-label">完工案件</div></div>
+</div>
+
+<h2 style="color:#fff;margin:20px 0">👷 核心團隊成員</h2>
+<div class="team-grid">
+<div class="member">
+<div class="member-avatar">👨‍💼</div>
+<div class="member-name">田中太郎</div>
+<div class="member-role">施工管理者</div>
+<div class="member-exp">建築士資格<br>20年經驗</div>
+</div>
+<div class="member">
+<div class="member-avatar">👨‍🔧</div>
+<div class="member-name">佐藤健</div>
+<div class="member-role">電氣工事士</div>
+<div class="member-exp">第二種電氣<br>15年經驗</div>
+</div>
+<div class="member">
+<div class="member-avatar">👨‍🍳</div>
+<div class="member-name">鈴木一郎</div>
+<div class="member-role">大工</div>
+<div class="member-exp">一級木工<br>18年經驗</div>
+</div>
+<div class="member">
+<div class="member-avatar">👨‍🎨</div>
+<div class="member-name">高橋美咲</div>
+<div class="member-role">設計師</div>
+<div class="member-exp">一級建築士<br>12年經驗</div>
+</div>
+<div class="member">
+<div class="member-avatar">👨‍🔧</div>
+<div class="member-name">伊藤 直樹</div>
+<div class="member-role">配管工</div>
+<div class="member-exp">配管資格<br>10年經驗</div>
+</div>
+<div class="member">
+<div class="member-avatar">👨‍💼</div>
+<div class="member-name">山田太郎</div>
+<div class="member-role">安全衛生管理者</div>
+<div class="member-exp">安全衛生主任<br>8年經驗</div>
+</div>
+</div>
+
+<div class="info-box">
+<h2>🔧 團隊編制（14人）</h2>
+<ul>
+<li>👷 現場代理人 - 1名</li>
+<li>📐 施工管理技師 - 1名</li>
+<li>🛡️ 安全衛生管理者 - 1名</li>
+<li>⚡ 電氣工事士 - 2名</li>
+<li>🔧 配管工 - 2名</li>
+<li>❄️ 空調設備士 - 1名</li>
+<li>🪵 大工 - 3名</li>
+<li>🎨 內裝工 - 2名</li>
+<li>🏡 床工 - 1名</li>
+</ul>
+</div>
+
+<div class="info-box">
+<h2>📋 施工流程</h2>
+</div>
+<div class="process">
+<div class="step"><div class="step-num">1</div><div class="step-title">諮詢評估</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-title">現場丈量</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-title">設計提案</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-title">估價確認</div></div>
+<div class="step"><div class="step-num">5</div><div class="step-title">簽約施工</div></div>
+<div class="step"><div class="step-num">6</div><div class="step-title">階段驗收</div></div>
+<div class="step"><div class="step-num">7</div><div class="step-title">完工交屋</div></div>
+</div>
+</div>
+</body>
+</html>
